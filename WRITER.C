@@ -463,16 +463,16 @@ void WriterGeneric(char * lpBuf, DWORD dwToWrite)
                             SetLastError(ERROR_SUCCESS);
                             if (!GetOverlappedResult(COMDEV(TTYInfo), &osWrite, &dwWritten, FALSE)) {
                                 if (GetLastError() == ERROR_OPERATION_ABORTED)
-                                    UpdateStatus("Write aborted\r\n");
+                                    UpdateStatus("書き込みが中止されました\r\n");
                                 else
                                     ErrorInComm("GetOverlappedResult(in Writer)");
                             }
                             
                             if (dwWritten != dwToWrite) {
                                 if ((GetLastError() == ERROR_SUCCESS) && SHOWTIMEOUTS(TTYInfo))
-                                    UpdateStatus("Write timed out. (overlapped)\r\n");
+                                    UpdateStatus("書き込みがタイムアウトしました。(overlapped)\r\n");
                                 else
-                                    ErrorReporter("Error writing data to port (overlapped)");
+                                    ErrorReporter("ポートへのデータの書き込み中にエラーが発生しました。(overlapped)");
                             }
                             break;
 
@@ -486,7 +486,7 @@ void WriterGeneric(char * lpBuf, DWORD dwToWrite)
                 // wait timed out
                 //
                 case WAIT_TIMEOUT:
-                            UpdateStatus("Wait Timeout in WriterGeneric.\r\n");
+                            UpdateStatus("WriterGenericでタイムアウトを待ちます。\r\n");
                             break;
 
                 case WAIT_FAILED:
@@ -505,7 +505,7 @@ void WriterGeneric(char * lpBuf, DWORD dwToWrite)
         // writefile returned immediately
         //
         if (dwWritten != dwToWrite)
-            UpdateStatus("Write timed out. (immediate)\r\n");
+            UpdateStatus("書き込みがタイムアウトしました。(immediate)\r\n");
     }
 
     CloseHandle(osWrite.hEvent);

@@ -570,5 +570,5 @@ BOOL DisconnectOK()
     if (!CONNECTED(TTYInfo))
         return TRUE;
     
-    return ((MessageBox(ghwndMain, "OK to Disconnect?", gszPort, MB_YESNO)) == IDYES);
+    return ((MessageBox(ghwndMain, "êÿífÇµÇ‹Ç∑Ç© ?", gszPort, MB_YESNO)) == IDYES);
 }

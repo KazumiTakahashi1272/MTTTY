@@ -107,7 +107,7 @@ void TransferRepeatCreate(LPCTSTR lpszFileName, DWORD dwFrequency)
     //
     // enable abort button and progress bar
     //
-    SetWindowText(GetDlgItem(ghWndStatusDlg, IDC_ABORTBTN), "Abort Tx");
+    SetWindowText(GetDlgItem(ghWndStatusDlg, IDC_ABORTBTN), "Txを中止する");
     ShowWindow(GetDlgItem(ghWndStatusDlg, IDC_ABORTBTN), SW_SHOW);
 
     if (!GetTransferSizes(hFile, &dwPacketSize, &dwMaxPackets, &dwFileSize)) {
@@ -266,7 +266,7 @@ void TransferFileTextStart(LPCTSTR lpstrFileName)
     // enable abort button and progress bar
     //
     gfAbortTransfer = FALSE;
-    SetWindowText(GetDlgItem(ghWndStatusDlg, IDC_ABORTBTN), "Abort Tx");
+    SetWindowText(GetDlgItem(ghWndStatusDlg, IDC_ABORTBTN), "Txを中止する");
     ShowWindow(GetDlgItem(ghWndStatusDlg, IDC_ABORTBTN), SW_SHOW);
     ShowWindow(GetDlgItem(ghWndStatusDlg, IDC_TRANSFERPROGRESS), SW_SHOW);
 
@@ -393,7 +393,7 @@ void ReceiveFileText(LPCTSTR lpstrFileName)
     // enable abort button and progress bar
     //
     gfAbortTransfer = FALSE;
-    SetWindowText(GetDlgItem(ghWndStatusDlg, IDC_ABORTBTN), "Close Capture");
+    SetWindowText(GetDlgItem(ghWndStatusDlg, IDC_ABORTBTN), "キャプチャを閉じる");
     ShowWindow(GetDlgItem(ghWndStatusDlg, IDC_ABORTBTN), SW_SHOW);
     ShowWindow(GetDlgItem(ghWndStatusDlg, IDC_TRANSFERPROGRESS), SW_SHOW);
 
@@ -514,7 +514,7 @@ BOOL GetTransferSizes(HANDLE hFile, DWORD * pdwDataPacketSize, DWORD * pdwNumPac
     }
     else {
         if (fi.nFileSizeHigh) {
-            MessageBox(ghwndMain, "File is too large to transfer.", "File Transfer Error", MB_OK);
+            MessageBox(ghwndMain, "ファイルが大きすぎて転送できません。", "ファイル転送エラー", MB_OK);
             return FALSE;
         }
 
@@ -526,7 +526,7 @@ BOOL GetTransferSizes(HANDLE hFile, DWORD * pdwDataPacketSize, DWORD * pdwNumPac
         *pdwNumPackets = *pdwFileSize / *pdwDataPacketSize;
 
         if (*pdwNumPackets > 65534) {
-            MessageBox(ghwndMain, "File is too large for buffer size.", "File Transfer Error", MB_OK);
+            MessageBox(ghwndMain, "ファイルがバッファサイズに対して大きすぎます。", "ファイル転送エラー", MB_OK);
             return FALSE;
         }
     }
@@ -559,7 +559,7 @@ void ShowTransferStatistics(DWORD dwEnd, DWORD dwStart, DWORD dwBytesTransferred
     // display only if dwSecs != 0; if dwSecs == 0, then divide by zero occurs.
     //
     if (dwSecs != 0) {
-        wsprintf(szTemp, "Bytes transferred: %d\r\nBytes/Second: %d\r\n", dwBytesTransferred, dwBytesTransferred / dwSecs);
+        wsprintf(szTemp, "転送されたバイト数: %d Bytes\r\n", dwBytesTransferred);
         UpdateStatus(szTemp);
     }
 
@@ -716,7 +716,7 @@ DWORD WINAPI TransferThreadProc(LPVOID lpV)
             fAborting = TRUE;
     }
 
-    OutputDebugString("Xfer: About to start sending data\n");
+    OutputDebugString("Xfer: データの送信を開始しようとしています\n");
 
     // Get Transfer Start Time
     dwStartTime = GetTickCount();

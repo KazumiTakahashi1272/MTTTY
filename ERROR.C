@@ -56,7 +56,7 @@ DWORD ErrorExtender(DWORD dwError, char ** szBuffer)
 
     dwRes = FormatMessage( FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER | 80 ,
                           NULL, dwError,
-                          MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),
+                          MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
                           (LPTSTR) szBuffer, 0, NULL);
 
     if (dwRes == 0) {
@@ -105,7 +105,7 @@ void ErrorReporter(char * szMessage)
     szFinal = LocalAlloc(LPTR, strlen(szMessage) + dwExtSize + 30);
 
     if (szFinal == NULL)	// if no final buffer, then can't format error
-        MessageBox(ghwndMain, "Cannot properly report error.", "Fatal Error", MB_OK);
+        MessageBox(ghwndMain, "ÉGÉâÅ[Çê≥ÇµÇ≠ïÒçêÇ≈Ç´Ç‹ÇπÇÒÅB", "Fatal Error", MB_OK);
     else {	
         wsprintf(szFinal, szFormat, dwErr, szMessage, szExtended);
 

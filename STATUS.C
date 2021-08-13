@@ -85,8 +85,8 @@ HFONT CreateStatusEditFont()
     LOGFONT lf = {0};
     HFONT   hFont;
 
-    lf.lfHeight         = 14 ;
-    lf.lfCharSet        = ANSI_CHARSET ;
+    lf.lfHeight         = 10 ;
+    lf.lfCharSet        = SHIFTJIS_CHARSET ;
     lf.lfOutPrecision   = OUT_DEFAULT_PRECIS ;
     lf.lfClipPrecision  = CLIP_DEFAULT_PRECIS ;
     lf.lfQuality        = DEFAULT_QUALITY ;
@@ -198,7 +198,7 @@ void InitStatusMessage()
         This won't show up until the ReaderAndStatusProc function
         is called when the threads are created after the port is connected.
     */
-    UpdateStatus("Status message go here:\r\n");
+    UpdateStatus("ステータスメッセージはこちら:\r\n");
 
     return;
 }
@@ -601,12 +601,12 @@ void ReportCommError()
         UpdateStatus("Txは受信文字を待っている。\r\n");
 
     if (comStat.cbInQue) {
-        wsprintf(szMessage, "%d bytes in input buffer.\r\n", comStat.cbInQue);
+        wsprintf(szMessage, "入力バッファに %d バイト。\r\n", comStat.cbInQue);
         UpdateStatus(szMessage);
     }
 
     if (comStat.cbOutQue) {
-        wsprintf(szMessage, "%d bytes in output buffer.\r\n", comStat.cbOutQue);
+        wsprintf(szMessage, "出力バッファに %d バイト。\r\n", comStat.cbOutQue);
         UpdateStatus(szMessage);
     }
 

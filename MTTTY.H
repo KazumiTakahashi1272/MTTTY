@@ -54,7 +54,7 @@
 //
 // window coords
 //
-#define MAXXWINDOW          750
+#define MAXXWINDOW          820//750
 #define MAXYWINDOW          530
 #define STARTXWINDOW        80
 #define STARTYWINDOW        70
