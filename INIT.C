@@ -470,10 +470,10 @@ DWORD WaitForThreads(DWORD dwTimeout)
         case WAIT_TIMEOUT:
             
             if (WaitForSingleObject(READSTATTHREAD(TTYInfo), 0) == WAIT_TIMEOUT)
-                OutputDebugString("Reader/Status Thread didn't exit.\n\r");
+                OutputDebugString("リーダー/ステータススレッドが終了しませんでした。\n\r");
 
             if (WaitForSingleObject(WRITERTHREAD(TTYInfo), 0) == WAIT_TIMEOUT)
-                OutputDebugString("Writer Thread didn't exit.\n\r");
+                OutputDebugString("ライタースレッドが終了しませんでした。\n\r");
 
             break;
 
@@ -524,7 +524,7 @@ BOOL BreakDownCommPort()
             interfere with a new connection.  I must abort
             the entire program.
         */
-        ErrorHandler("Error closing port.");
+        ErrorHandler("ポートを閉じるときにエラーが発生しました。");
 
     //
     // lower DTR
