@@ -278,7 +278,7 @@ BOOL InitTTYInfo()
     //
     // setup default font information
     // 
-    LFTTYFONT( TTYInfo ).lfHeight =         12 ;
+    LFTTYFONT( TTYInfo ).lfHeight =         15 ;
     LFTTYFONT( TTYInfo ).lfWidth =          0 ;
     LFTTYFONT( TTYInfo ).lfEscapement =     0 ;
     LFTTYFONT( TTYInfo ).lfOrientation =    0 ;
@@ -286,12 +286,12 @@ BOOL InitTTYInfo()
     LFTTYFONT( TTYInfo ).lfItalic =         0 ;
     LFTTYFONT( TTYInfo ).lfUnderline =      0 ;
     LFTTYFONT( TTYInfo ).lfStrikeOut =      0 ;
-    LFTTYFONT( TTYInfo ).lfCharSet =        OEM_CHARSET ;
+    LFTTYFONT( TTYInfo ).lfCharSet =        SHIFTJIS_CHARSET ;
     LFTTYFONT( TTYInfo ).lfOutPrecision =   OUT_DEFAULT_PRECIS ;
     LFTTYFONT( TTYInfo ).lfClipPrecision =  CLIP_DEFAULT_PRECIS ;
     LFTTYFONT( TTYInfo ).lfQuality =        DEFAULT_QUALITY ;
     LFTTYFONT( TTYInfo ).lfPitchAndFamily = FIXED_PITCH | FF_MODERN ;
-    strcpy( LFTTYFONT( TTYInfo ).lfFaceName, "FixedSys" ) ;
+    strcpy( LFTTYFONT( TTYInfo ).lfFaceName, "ÇlÇr ÉSÉVÉbÉN" ) ;
 
     InitNewFont( LFTTYFONT(TTYInfo), RGB(0,0,0));
 
